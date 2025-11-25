@@ -56,6 +56,7 @@ const Input: React.FC<InputProps> = ({
     "absolute left-[30px] transition-all duration-200 pointer-events-none",
     "text-input-border",
     "text-sm leading-none",
+    "text-[20px]",
 
     {
       "top-[8px] tracking-tighter": isLabelFloating,
@@ -73,7 +74,6 @@ const Input: React.FC<InputProps> = ({
     "absolute left-[30px] text-input-border opacity-70 transition-opacity duration-200",
     "pointer-events-none",
 
- 
     isLabelFloating ? "top-[24px]" : "top-1/2 -translate-y-1/2"
   );
 

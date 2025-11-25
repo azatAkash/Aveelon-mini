@@ -3,10 +3,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
-
 body {
   font-family: "Montserrat", sans-serif;
+ 
 }
 
 @theme inline {
