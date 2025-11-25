@@ -40,7 +40,7 @@ const Input: React.FC<InputProps> = ({
   );
 
   const inputClasses = clsx(
-    "w-full bg-transparent focus:outline-none",
+    "w-full bg-transparent focus:outline-none !font-family-inter",
     "px-[30px] text-[20px] leading-normal",
 
     isLabelFloating ? "pt-[20px] pb-[10px]" : "py-[14px]",
@@ -53,7 +53,7 @@ const Input: React.FC<InputProps> = ({
   );
 
   const labelClasses = clsx(
-    "absolute left-[30px] transition-all duration-200 pointer-events-none",
+    "absolute left-[30px] transition-all duration-200 pointer-events-none !font-family-inter",
     "text-input-border",
     "text-sm leading-none",
 
@@ -70,7 +70,7 @@ const Input: React.FC<InputProps> = ({
 
   const hintClasses = clsx(
     "text-[20px] leading-normal",
-    "absolute left-[30px] text-input-border opacity-70 transition-opacity duration-200",
+    "absolute left-[30px] text-input-border opacity-70 transition-opacity duration-200 !font-family-inter",
     "pointer-events-none",
 
  
@@ -90,10 +90,10 @@ const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full ">
       <div
         className={clsx(
-          "relative rounded-[15px] bg-white",
+          "relative rounded-[15px] bg-white w-full ",
           borderAndErrorClasses
         )}
       >
