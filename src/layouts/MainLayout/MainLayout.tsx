@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 export default function MainLayout(){
     return(
-        <div className="min-h-screen bg-gray-200">
+        <div className="min-h-screen">
             
             <Outlet/>
         </div>
