@@ -1,10 +1,32 @@
 import { Button, Input } from "@/components";
+import type React from "react";
+import { useForm, type SubmitHandler } from "react-hook-form";
 
-export default function EmailStep() {
+type EmailForm = {
+  email: string;
+};
+
+type EmailStepProps = {
+  setStep: React.Dispatch<React.SetStateAction<1|2|3>>
+}
+
+export default function EmailStep({setStep}: EmailStepProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<EmailForm>({ mode: "onBlur" });
+
+  const onSubmit: SubmitHandler<EmailForm> = (data) => {
+    console.log(data.email);
+    setStep(2)
+  };
   return (
-    
-    <div className="w-full max-w-[626px] px-[86px] pt-12 pb-[60px] bg-white rounded-[50px] shadow-lg relative">
-      <button className="absolute top-[30px] right-[20px] text-black">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full max-w-[626px] px-[86px] pt-12 pb-[60px] bg-white rounded-[50px] shadow-lg relative"
+    >
+      <button className="absolute top-[30px] right-5 text-black">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -25,8 +47,22 @@ export default function EmailStep() {
         Восстановление пароля
       </h2>
 
-     
-      <Input placeholder="Введите email" name="email" />
+      <Input
+        placeholder="Введите email"
+        label="Email"
+        error={
+          typeof errors.email?.message === "string"
+            ? errors.email?.message
+            : undefined
+        }
+        {...register("email", {
+          required: "Введите email",
+          pattern: {
+            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            message: "Введите корректный email",
+          },
+        })}
+      />
 
       <p className="text-center text-[14px] text-black my-10 leading-[1.3] font-family-inter">
         Для восстановления пароля введите электронную почту
@@ -35,6 +71,6 @@ export default function EmailStep() {
       <div className="flex justify-center">
         <Button>Отправить</Button>
       </div>
-    </div>
+    </form>
   );
 }

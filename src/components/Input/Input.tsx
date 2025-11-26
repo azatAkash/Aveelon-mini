@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import type { InputProps } from "./Input.props";
 import clsx from "clsx";
+import EyeOn from "@/assets/svg/eye-on.svg";
+import EyeOff from "@/assets/svg/eye-off.svg";
 
 const Input: React.FC<InputProps> = ({
   error,
   label,
   hint,
-  size = "default",
+  variant = "default",
   disabled = false,
   value,
   onChange,
@@ -16,34 +18,46 @@ const Input: React.FC<InputProps> = ({
   ...rest
 }) => {
   const [isFocused, setIsFocused] = useState(false);
-  const isFilled = !!value;
+  const [showPassword, setShowPassword] = useState(false);
+  const isFilled = value !== undefined && value !== null && value !== "";
 
-  const isLabelFloating = isFocused || isFilled;
-
-  const isHintVisible = !!hint && !isFilled && isFocused;
+  const isCodeVariant = variant === "code";
+  const isPassword = variant === "password";
+ const isLabelFloating = !isCodeVariant && (isFocused || isFilled)
+  const isHintVisible = !isCodeVariant && !!hint && !isFilled && isFocused;
 
   const borderAndErrorClasses = clsx(
-    "border",
-    "border-input-border",
+    "rounded-[15px]",
     {
+      "w-[70px] h-[70px]": isCodeVariant,
+      "w-full": !isCodeVariant,
+    },
+    {
+      "bg-white": !isCodeVariant,
+      "bg-disabled": isCodeVariant,
+    },
+    isCodeVariant && {
       "border-[2px] border-primary": error,
+      "border-none": !error,
     },
-    {
-      "border-none bg-disabled": disabled,
-    },
-    {
-      "border-[2px] border-input-border": isFocused && !error && !disabled,
-    },
-    {
+    !isCodeVariant && {
+      "border border-input-border": !error && !isFocused,
+      "border-[2px] border-primary": error,
+      "border-[1px] border-input-border": !error && isFocused && !disabled,
+      "border-none": disabled,
       "hover:bg-input-hover": !error && !disabled && !isFocused,
     }
   );
-
   const inputClasses = clsx(
-    "w-full bg-transparent focus:outline-none !font-family-inter",
-    "px-[30px] text-[20px] leading-normal",
+    " input-field w-full bg-transparent focus:outline-none !font-family-inter ",
 
-    isLabelFloating ? "pt-[20px] pb-[10px]" : "py-[14px]",
+    {
+      "text-center text-[32px] font-semibold h-full": isCodeVariant,
+      "px-[30px] text-[20px] leading-normal": !isCodeVariant,
+      "pt-[20px] pb-[10px]": !isCodeVariant && isLabelFloating,
+      "py-[14px]": !isCodeVariant && !isLabelFloating,
+      "pr-[70px]": isPassword && !isCodeVariant,
+    },
 
     error ? "text-primary" : "text-black",
 
@@ -73,7 +87,6 @@ const Input: React.FC<InputProps> = ({
     "absolute left-[30px] text-input-border opacity-70 transition-opacity duration-200 !font-family-inter",
     "pointer-events-none",
 
- 
     isLabelFloating ? "top-[24px]" : "top-1/2 -translate-y-1/2"
   );
 
@@ -89,11 +102,21 @@ const Input: React.FC<InputProps> = ({
     if (onBlur) onBlur(e);
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+  const inputType = isPassword
+    ? showPassword
+      ? "text"
+      : "password"
+    : rest.type || "text";
+
   return (
     <div className="relative w-full ">
       <div
         className={clsx(
-          "relative rounded-[15px] bg-white w-full ",
+          "relative rounded-[15px] w-full",
           borderAndErrorClasses
         )}
       >
@@ -107,6 +130,7 @@ const Input: React.FC<InputProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
           placeholder={label ? "" : rest.placeholder}
+          type={inputType}
           {...rest}
         />
 
@@ -117,9 +141,28 @@ const Input: React.FC<InputProps> = ({
         )}
 
         {isHintVisible && <div className={hintClasses}>{hint}</div>}
+
+        {isPassword && (
+          <button
+            type="button"
+            onClick={togglePasswordVisibility}
+            disabled={disabled}
+            className={clsx(
+              "absolute right-[20px] top-1/2 -translate-y-1/2 p-2",
+              "cursor-pointer disabled:cursor-not-allowed"
+            )}
+            aria-label={showPassword ? "Скрыть пароль" : "Показать пароль"}
+          >
+            {showPassword ? (
+              <img src={EyeOff} alt="Скрыть" className="w-6 h-6" />
+            ) : (
+              <img src={EyeOn} alt="Показать" className="w-6 h-6" />
+            )}
+          </button>
+        )}
       </div>
 
-      {error && <p className={errorClasses}>{error}</p>}
+      {error && !isCodeVariant && <p className={errorClasses}>{error}</p>}
     </div>
   );
 };
