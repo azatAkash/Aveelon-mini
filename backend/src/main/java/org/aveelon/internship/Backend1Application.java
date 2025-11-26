@@ -1,4 +1,4 @@
-package org.sailaubayev.springcourse.backend1;
+package org.aveelon.internship;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
