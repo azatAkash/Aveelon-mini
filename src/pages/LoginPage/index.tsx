@@ -5,9 +5,9 @@ import { Input } from "@/components/Input";
 import { Button } from "@/components/ui";
 
 export const LoginPage: React.FC = () => {
-  const [email, setEmail] = useState(""); // Состояние для email
-  const [password, setPassword] = useState(""); // Состояние для пароля
-  const [error, setError] = useState(""); // Состояние для ошибок
+  const [email, setEmail] = useState(""); 
+  const [password, setPassword] = useState(""); 
+  const [error, setError] = useState(""); 
 
   const handleLogin = async () => {
     if (!email || !password) {
