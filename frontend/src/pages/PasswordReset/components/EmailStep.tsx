@@ -7,20 +7,24 @@ type EmailForm = {
 };
 
 type EmailStepProps = {
-  setStep: React.Dispatch<React.SetStateAction<1|2|3>>
-}
+  setStep: React.Dispatch<React.SetStateAction<1 | 2 | 3>>;
+};
 
-export default function EmailStep({setStep}: EmailStepProps) {
+export default function EmailStep({ setStep }: EmailStepProps) {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<EmailForm>({ mode: "onBlur" });
 
+  const email = watch("email");
+
   const onSubmit: SubmitHandler<EmailForm> = (data) => {
     console.log(data.email);
-    setStep(2)
+    setStep(2);
   };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -35,11 +39,7 @@ export default function EmailStep({setStep}: EmailStepProps) {
           stroke="currentColor"
           className="w-6 h-6"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
 
@@ -48,13 +48,10 @@ export default function EmailStep({setStep}: EmailStepProps) {
       </h2>
 
       <Input
-        placeholder="Введите email"
+        
         label="Email"
-        error={
-          typeof errors.email?.message === "string"
-            ? errors.email?.message
-            : undefined
-        }
+        value={email} 
+        error={typeof errors.email?.message === "string" ? errors.email?.message : undefined}
         {...register("email", {
           required: "Введите email",
           pattern: {
