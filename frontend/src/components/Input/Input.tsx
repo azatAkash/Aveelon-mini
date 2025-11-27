@@ -5,6 +5,7 @@ import EyeOn from "@/assets/svg/eye-on.svg";
 import EyeOff from "@/assets/svg/eye-off.svg";
 
 const Input: React.FC<InputProps> = ({
+  className,
   error,
   label,
   hint,
@@ -117,13 +118,13 @@ const Input: React.FC<InputProps> = ({
       <div
         className={clsx(
           "relative rounded-[15px] w-full",
-          borderAndErrorClasses
+          borderAndErrorClasses, className
         )}
       >
         <input
           id={name}
           name={name}
-          value={value}
+          value={value ?? ""}
           onChange={onChange}
           disabled={disabled}
           className={inputClasses}

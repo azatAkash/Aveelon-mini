@@ -48,7 +48,6 @@ export default function EmailStep({ setStep }: EmailStepProps) {
       </h2>
 
       <Input
-        
         label="Email"
         value={email} 
         error={typeof errors.email?.message === "string" ? errors.email?.message : undefined}
