@@ -70,6 +70,7 @@ const Input: React.FC<InputProps> = ({
     "absolute left-[30px] transition-all duration-200 pointer-events-none !font-family-inter",
     "text-input-border",
     "text-sm leading-none",
+    "text-[20px]",
 
     {
       "top-[8px] tracking-tighter": isLabelFloating,
