@@ -6,7 +6,7 @@
 @theme inline {
   --font-family-montserrat: "Montserrat", sans-serif;
   --font-family-inter: "Inter", sans-serif;
-  --font-family-sans: 'Montserrat', sans-serif;
+  --font-family-sans: "Montserrat", sans-serif;
   --color-primary: #de3b38;
   --color-primary-hover: #d33734;
   --color-primary-pressed: #cb3532;
@@ -17,11 +17,11 @@
   --color-input-border: #8c8c8c;
   --color-input-hover: #fbf9f9;
   --color-background: #f8f8f8;
+  --color-gray: #868f95;
 }
 
 input:-webkit-autofill {
-  
-  background-clip: padding-box; 
+  background-clip: padding-box;
   transition: background-color 5000s ease-in-out 0s;
 }
 

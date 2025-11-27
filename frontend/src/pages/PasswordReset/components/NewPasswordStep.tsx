@@ -50,7 +50,6 @@ export default function NewPasswordStep() {
           }}
           render={({ field }) => (
             <Input
-            
               variant="password"
               label="Повторите Пароль"
               {...field}
