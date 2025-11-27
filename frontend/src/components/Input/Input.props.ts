@@ -7,7 +7,6 @@ export interface InputProps extends StandardInputProps {
   variant?: 'default' | 'code' | 'password'; 
   value?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  name: string;
   error?: string;
   disabled?: boolean;
 }
