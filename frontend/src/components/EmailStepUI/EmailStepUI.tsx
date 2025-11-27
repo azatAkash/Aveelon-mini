@@ -27,7 +27,6 @@ export function EmailStepUI({
       className="w-full max-w-[626px] px-[86px] pt-12 pb-[60px] bg-white rounded-[50px] shadow-lg relative"
     >
       <button className="absolute top-[30px] right-5 text-black">
-        {" "}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -36,13 +35,12 @@ export function EmailStepUI({
           stroke="currentColor"
           className="w-6 h-6"
         >
-          {" "}
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
             d="M6 18L18 6M6 6l12 12"
-          />{" "}
-        </svg>{" "}
+          />
+        </svg>
       </button>
       <h2 className="text-[24px] font-medium text-center my-10">{title}</h2>
 
