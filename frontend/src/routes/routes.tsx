@@ -1,5 +1,6 @@
 import { LoginLayout } from "@/layouts/LoginLayout";
 import { MainLayout } from "@/layouts/MainLayout";
+import { AccountRecovery } from "@/pages/AccountRecovery";
 import { LoginPage } from "@/pages/LoginPage";
 import { PasswordReset } from "@/pages/PasswordReset";
 import { SignUpPage } from "@/pages/SignUpPage";
@@ -14,6 +15,10 @@ export const routes: RouteObject[] = [
         path: "password-reset",
         element: <PasswordReset />,
       },
+      {
+        path: "account-recovery",
+        element: <AccountRecovery/>
+      }
     ],
   },
   {
