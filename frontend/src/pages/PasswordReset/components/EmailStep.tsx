@@ -1,6 +1,6 @@
 import { Button, Input } from "@/components";
 import type React from "react";
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { useForm, useWatch, type SubmitHandler } from "react-hook-form";
 
 type EmailForm = {
   email: string;
@@ -14,11 +14,14 @@ export default function EmailStep({ setStep }: EmailStepProps) {
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors },
   } = useForm<EmailForm>({ mode: "onBlur" });
 
-  const email = watch("email");
+  const email = useWatch({
+    control,
+    name: "email",
+  });
 
   const onSubmit: SubmitHandler<EmailForm> = (data) => {
     console.log(data.email);
@@ -39,7 +42,11 @@ export default function EmailStep({ setStep }: EmailStepProps) {
           stroke="currentColor"
           className="w-6 h-6"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
         </svg>
       </button>
 
@@ -49,8 +56,12 @@ export default function EmailStep({ setStep }: EmailStepProps) {
 
       <Input
         label="Email"
-        value={email} 
-        error={typeof errors.email?.message === "string" ? errors.email?.message : undefined}
+        value={email}
+        error={
+          typeof errors.email?.message === "string"
+            ? errors.email?.message
+            : undefined
+        }
         {...register("email", {
           required: "Введите email",
           pattern: {

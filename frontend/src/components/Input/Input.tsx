@@ -149,7 +149,7 @@ const Input: React.FC<InputProps> = ({
             onClick={togglePasswordVisibility}
             disabled={disabled}
             className={clsx(
-              "absolute right-[20px] top-1/2 -translate-y-1/2 p-2",
+              "absolute right-5 top-1/2 -translate-y-1/2 p-2",
               "cursor-pointer disabled:cursor-not-allowed"
             )}
             aria-label={showPassword ? "Скрыть пароль" : "Показать пароль"}
