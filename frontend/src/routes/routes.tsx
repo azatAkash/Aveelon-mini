@@ -2,8 +2,10 @@ import { LoginLayout } from "@/layouts/LoginLayout";
 import { MainLayout } from "@/layouts/MainLayout";
 import { AccountRecovery } from "@/pages/AccountRecovery";
 import { LoginPage } from "@/pages/LoginPage";
+import MainPage from "@/pages/ManPage";
 import { PasswordReset } from "@/pages/PasswordReset";
 import { SignUpPage } from "@/pages/SignUpPage";
+
 import type { RouteObject } from "react-router-dom";
 
 export const routes: RouteObject[] = [
@@ -12,17 +14,24 @@ export const routes: RouteObject[] = [
     element: <MainLayout />,
     children: [
       {
+        index: true, // 👈 это корень "/"
+        element: <MainPage />,
+      },
+      {
         path: "password-reset",
         element: <PasswordReset />,
       },
       {
         path: "account-recovery",
-        element: <AccountRecovery/>
-      }
+        element: <AccountRecovery />,
+      },
     ],
   },
   {
     element: <LoginLayout />,
-    children: [{ path: "login", element: <LoginPage /> }, { path: 'sign-up', element: <SignUpPage />}],
+    children: [
+      { path: "login", element: <LoginPage /> },
+      { path: "sign-up", element: <SignUpPage /> },
+    ],
   },
 ];
