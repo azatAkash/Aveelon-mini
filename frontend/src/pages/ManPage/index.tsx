@@ -11,28 +11,26 @@ const mockCourses = Array.from({ length: 8 }).map((_, i) => ({
 
 export const MainPage: React.FC = () => {
   return (
-    <div className="bg-[#F3F3F5] min-h-screen">
-      <main className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-[80px] pt-10 pb-16">
-        <HeroSection />
+    <div className="h-full mx-auto px-4 md:px-8 lg:px-[80px] pt-10 pb-16 flex flex-col">
+      <HeroSection />
 
-        <section className="mt-12">
-          <h2 className="text-[26px] md:text-[30px] font-semibold text-center mb-8">
-            Курсы
-          </h2>
+      <section className="mt-12 flex-1 overflow-y-auto">
+        <h2 className="text-[26px] md:text-[30px] font-semibold text-center mb-8">
+          Курсы
+        </h2>
 
-          <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {mockCourses.map((course) => (
-              <CourseCard
-                key={course.id}
-                title={course.title}
-                reviewsCount={course.reviewsCount}
-                price={course.price}
-                duration={course.duration}
-              />
-            ))}
-          </div>
-        </section>
-      </main>
+        <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 pb-4 pr-4">
+          {mockCourses.map((course) => (
+            <CourseCard
+              key={course.id}
+              title={course.title}
+              reviewsCount={course.reviewsCount}
+              price={course.price}
+              duration={course.duration}
+            />
+          ))}
+        </div>
+      </section>
     </div>
   );
 };

@@ -28,7 +28,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   return (
     <div
       className="
-        w-[260px]
+
         rounded-[24px]
         bg-white
         shadow-sm

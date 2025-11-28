@@ -4,10 +4,10 @@ import Footer from "@/layouts/Footer";
 
 export const MainLayout: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F3F3F5]">
+    <div className="h-screen flex flex-col bg-[#F3F3F5]">
       <Header isAuthenticated={false} />
 
-      <div className="flex-1">
+      <div className="flex-1 overflow-hidden">
         <Outlet />
       </div>
 

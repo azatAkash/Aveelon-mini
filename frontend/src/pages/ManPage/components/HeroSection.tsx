@@ -4,18 +4,18 @@ const HeroSection = () => {
   return (
     <section
       className="
+        margin
         w-full
         bg-white
         
         rounded-[24px]
-        px-6 py-10
+        px-16 
 
         flex flex-col md:flex-row
         items-center justify-between
         gap-8
       "
     >
-      {/* ЛЕВАЯ ЧАСТЬ */}
       <div className="max-w-[480px]">
         <h1 className="text-[28px] md:text-[32px] font-semibold leading-[120%]">
           Aveelon <span className="text-[var(--color-primary)]">mini</span>
@@ -26,16 +26,15 @@ const HeroSection = () => {
         </p>
       </div>
 
-      {/* ПРАВАЯ ЧАСТЬ */}
       <div className="relative">
         <img
           src={StartImage}
           alt="Student with laptop"
           className="
-            w-[260px]
-            sm:w-[300px]
-            md:w-[360px]
-            lg:w-[420px]
+            w-[200px]
+            sm:w-[260px]
+            md:w-[300px]
+            lg:w-[360px]
             object-contain
           "
         />
