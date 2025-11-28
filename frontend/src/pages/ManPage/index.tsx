@@ -14,8 +14,8 @@ export const MainPage: React.FC = () => {
     <div className="h-full mx-auto px-4 md:px-8 lg:px-[80px] pt-10 pb-16 flex flex-col">
       <HeroSection />
 
-      <section className="mt-12 flex-1 overflow-y-auto">
-        <h2 className="text-[26px] md:text-[30px] font-semibold text-center mb-8">
+      <section className="mt-6 flex-1 overflow-y-auto">
+        <h2 className="text-[30px] md:text-[32px] font-semibold text-center mb-8">
           Курсы
         </h2>
 

@@ -28,15 +28,15 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   return (
     <div
       className="
-
-        rounded-[24px]
+        rounded-[12px]
+        max-w-[450px]
         bg-white
         shadow-sm
         overflow-hidden
         flex flex-col
       "
     >
-      <div className="relative bg-[#D9D9D9] h-[150px]">
+      <div className="relative bg-[#C4C4C4] h-[200px]">
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           <span className="px-3 py-1 rounded-full bg-white text-[13px] leading-[130%]">
             {bonusLabel}
@@ -60,7 +60,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({
         </button>
       </div>
 
-      <div className="bg-[#F9F9F9] px-5 py-4 flex-1 flex flex-col justify-between">
+      <div className="bg-[#F9F9F9] px-5 py-5 flex-1 flex flex-col justify-between">
         <div className="flex flex-col gap-1">
           <h3 className="text-[18px] leading-[130%] font-medium text-black">
             {title}
@@ -78,18 +78,17 @@ export const CourseCard: React.FC<CourseCardProps> = ({
             <span className="text-[13px] text-[#868F95]">{duration}</span>
           </div>
 
-          {/* Кнопка со стрелкой */}
           <button
             type="button"
             onClick={onClick}
             className="
               w-10 h-10
               rounded-full
-              bg-[#E52525]
+              bg-[#D33734]
               flex items-center justify-center
             "
           >
-            <img src={IconButton} alt="open" className="w-4 h-4" />
+            <img src={IconButton} alt="open" className="w-10 h-10" />
           </button>
         </div>
       </div>
